@@ -9,11 +9,13 @@ import TabItem from '@theme/TabItem';
 
 Authentication is the process of proving that people are who they say they are.
 
-Manifest uses **JSON Web Tokens (JWT)** to do that. When you log in, you basically create a new **token** that you use in your next requests to prove your identity. This allows us to use [Policies](./policies.md) to grant or not the access to some resources based on the user characteristics.
+Manifest uses **JSON Web Tokens (JWT)** to do that. When you log in, you basically create a new **token** that you use in your next requests to prove your identity. This allows us to use [Policies](./policies.md) to grant or deny the access to some resources based on the user characteristics.
 
 ## Admins
 
-Admins are a built-in entity that is the only one to have access to the **admin panel** (located at http://localhost:1111 by default). Only admins can see and manage other admins. They are the most powerful users of your application. However, you still can create some rules that will restrict the access even for them.
+Admins are a built-in entity that are **the only ones to have access to the admin panel** (located at http://localhost:1111 by default). The admins are usually the persons that manage the application on a day-to-day basis. Only admins can see and manage other admins.
+
+Even though they are the most powerful users of your application, you still can create some [policies](./policies.md#access-types) that will restrict the access even for them.
 
 The [seed command](./entities.md#seed) will create one admin with email `admin@manifest.build` and the password `admin`. You can create more from the admin panel.
 
@@ -21,13 +23,13 @@ The [seed command](./entities.md#seed) will create one admin with email `admin@m
 
 In Manifest, the admin panel is **non-technical** 😺.
 
-You can give credentials for the future administrators of your app without worrying that the break the system !
+It means that you can give credentials to the administrators of your app without worrying that they will end up breaking the system !
 
 :::
 
 ## Authenticable entities
 
-You can convert any entity into an **authenticable entity**, allowing users to log with it.
+You can convert any entity into an **authenticable entity**, allowing users to log in with it.
 
 ```yaml
 # manifest/backend.yml
@@ -46,7 +48,7 @@ The passwords are automatically hashed using _SHA-3 algorithm_.
 
 ### Login
 
-Login your credentials as an **admin** or an **authenticable entity**.
+Log in your credentials as an **admin** or an **authenticable entity**.
 
 <Tabs>
   <TabItem value="sdk" label="JS SDK" default>
@@ -57,7 +59,7 @@ Login your credentials as an **admin** or an **authenticable entity**.
     // Login as User entity.
     await manifest.login('users', 'user@example.com', 'password')
 
-    // Then all following requests will have the authorization token in its header until logout.
+    // Then all following requests will have the authorization token in their header until logout.
     const example = await manifest.from('restricted-resource').find()
     ```
 
@@ -91,7 +93,7 @@ Login your credentials as an **admin** or an **authenticable entity**.
 
 ### Sign up
 
-Any authenticable entity allows new users to sing up if the [policies](./policies.md) allow it.
+Any authenticable entity allows new users to sign up if the [policies](./policies.md) allow it.
 
 <Tabs>
   <TabItem value="sdk" label="JS SDK" default>
@@ -139,17 +141,17 @@ It is not possible to sign up as an **admin**. If you want to create more admins
 
 ### Logout
 
-Logout removes the token from the future request headers.
+Logout removes the token from future request headers.
 
 <Tabs>
   <TabItem value="sdk" label="JS SDK" default>
     ```js
-    // All future calls will loose the "Authorization" header.
+    // All future calls will lose the "Authorization" header.
     await manifest.logout()
     ```
 
   </TabItem>
   <TabItem value="rest" label="REST API" default>
-    Reset the `Authorization` header as you usually do and you are good to go !
+    Reset the `Authorization` header as you usually do, and you are good to go !
   </TabItem>
 </Tabs>
