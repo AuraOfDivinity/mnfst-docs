@@ -139,6 +139,34 @@ It is not possible to sign up as an **admin**. If you want to create more admins
 
 :::
 
+### Get current user
+
+Get the current logged-in user.
+
+<Tabs>
+  <TabItem value="sdk" label="JS SDK" default>
+    ```js
+    // Get the current user (logged as Contributor entity).
+    const me = await manifest.from('contributors').me()
+    ```
+
+  </TabItem>
+  <TabItem value="rest" label="REST API" default>
+    ```http
+    GET /api/auth/contributors/me
+    Content-Type: application/json
+    Authorization: Bearer your-token-here
+
+    // Response.
+    {
+      id: 1,
+      email: 'contributor@test.com'
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
 ### Logout
 
 Logout removes the token from future request headers.
