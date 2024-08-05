@@ -24,8 +24,8 @@ import Manifest from "@mnfst/sdk";
 // Initialize client with default backend URL: http://localhost:1111.
 const manifest = new Manifest();
 
-// Initialize client with custom URL.
-const manifest = new Manifest("https://example.com/api");
+// Initialize client with custom base URL.
+const manifest = new Manifest("https://example.com");
 ```
 
 ## CRUD operations
