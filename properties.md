@@ -29,7 +29,7 @@ You can pass arguments using the long syntax:
 | ----------- | -------- | ---------- | ----------------------------------------------------------------------- |
 | **type**    | "string" | _PropType_ | The [Property type](#property-types) (text, number, email, location...) |
 | **hidden**  | `false`  | boolean    | If the property should be hidden in the API response                    |
-| **options** | {}       | Object     | Specific options depending on **type**                                  |
+| **options** | -        | Object     | Specific options depending on **type**                                  |
 
 ## Property types
 
@@ -53,7 +53,6 @@ Textarea field for medium-size texts.
 ```yaml
 - { name: description, type: text }
 ```
-
 
 ### Number
 
@@ -100,7 +99,6 @@ Timestamp field.
 ```yaml
 - { name: acquiredAt, type: timestamp }
 ```
-
 
 ### Email
 
