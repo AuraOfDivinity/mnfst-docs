@@ -88,12 +88,13 @@ Content-Type: application/json
 
 | Validator          | Type    | Description                                                                          |
 | ------------------ | ------- | ------------------------------------------------------------------------------------ |
+| `required`         | boolean | Indicates whether the property must not be empty.                                    |
 | `isDefined`        | boolean | Checks if value is defined (!== undefined, !== null).                                |
 | `isOptional`       | boolean | Checks if given value is empty (=== null, === undefined) and ignores all validators. |
 | `equals`           | any     | Checks if value equals ("===") comparison.                                           |
 | `notEquals`        | any     | Checks if value not equal ("!==") comparison.                                        |
 | `isEmpty`          | boolean | Indicates whether the property can be empty.                                         |
-| `isNotEmpty`       | boolean | Indicates whether the property must not be empty.                                    |
+| `isNotEmpty`       | boolean | Indicates whether the property must not be empty. Alias for `required`               |
 | `isIn`             | array   | Checks if value is in an array of allowed values.                                    |
 | `isNotIn`          | array   | Checks if value not in an array of disallowed values.                                |
 | `min`              | number  | The minimum value or length allowed for the property.                                |
