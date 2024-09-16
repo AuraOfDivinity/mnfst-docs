@@ -72,10 +72,10 @@ An URL that links to an external page.
 
 ### Money
 
-A money field with a currency.
+A money field with a currency. Money properties can have up to 2 digits after coma.
 
 ```yaml
-- { name: price, type: money, options: { currency: 'EUR' } }
+- { name: price, type: money, options: { currency: "EUR" } }
 ```
 
 ##### Parameters
@@ -116,14 +116,14 @@ For any field with a "true or false" value.
 
 ### Password
 
-Password field.
+Password field. Most of the time you do not need to implement passwords manually as [authenticable entities](./auth.md#authenticable-entities) have built-in `email` and `password` fields to log in.
 
 ```yaml
 - { name: password, type: password }
 ```
 
-:::danger Caution
-Passwords should never be stored as clear text.
+:::warning
+When setting the type as `password`, Manifest hashes automatically the value before storing it. Passwords should never be stored as clear text.
 :::
 
 ### Choice
@@ -137,7 +137,7 @@ A given choice of options.
 - {
     name: status,
     type: choice,
-    options: { values: [draft, submitted, published], sequential: true }
+    options: { values: [draft, submitted, published], sequential: true },
   }
 ```
 

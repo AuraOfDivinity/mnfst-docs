@@ -47,6 +47,8 @@ As for the [properties](properties.md), there is a short and a long syntax. The 
     - { name: Owner, entity: User, eager: true }
 ```
 
+When you define a **belongsTo** relationship, it implicitly set the opposite _hasMany_ relationship and allow [querying relations](#querying-relations) in both directions.
+
 ### Relation params
 
 You can pass arguments using the long syntax:
