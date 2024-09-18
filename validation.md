@@ -20,7 +20,7 @@ entities:
       - { name: age, type: number }
     validation:
       name: { minLength: 3 } # The name should have at least 3 characters.
-      age: { min: 1, max: 30 } # Age should a be a number between 1 and 30.
+      age: { min: 1, max: 30 } # Age should be a number between 1 and 30.
 ```
 
 :::tip Tip
@@ -56,13 +56,13 @@ entities:
       - {
           name: email,
           type: email,
-          validation: { contains: '@company.com', isOptional: true }
+          validation: { contains: '@company.com', isOptional: true },
         } #  If provided, the email should contain "@company.com"
 ```
 
 ## Response
 
-If the validation fails, the response will list the validation error(s) the its body:
+If the validation fails, the response will list the validation error(s) in its body:
 
 ```http
 // Create a new Employee
