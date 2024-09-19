@@ -86,32 +86,27 @@ Content-Type: application/json
 
 ## Available validators
 
-| Validator          | Type    | Description                                                                          |
-| ------------------ | ------- | ------------------------------------------------------------------------------------ |
-| `required`         | boolean | Indicates whether the property must not be empty.                                    |
-| `isDefined`        | boolean | Checks if value is defined (!== undefined, !== null).                                |
-| `isOptional`       | boolean | Checks if given value is empty (=== null, === undefined) and ignores all validators. |
-| `equals`           | any     | Checks if value equals ("===") comparison.                                           |
-| `notEquals`        | any     | Checks if value not equal ("!==") comparison.                                        |
-| `isEmpty`          | boolean | Indicates whether the property can be empty.                                         |
-| `isNotEmpty`       | boolean | Indicates whether the property must not be empty. Alias for `required`               |
-| `isIn`             | array   | Checks if value is in an array of allowed values.                                    |
-| `isNotIn`          | array   | Checks if value not in an array of disallowed values.                                |
-| `min`              | number  | The minimum value or length allowed for the property.                                |
-| `max`              | number  | The maximum value or length allowed for the property.                                |
-| `contains`         | string  | Checks if string contains the seed.                                                  |
-| `notContains`      | string  | Checks if string does not contain the seed.                                          |
-| `isAlpha`          | boolean | Checks if the string contains only letters (a-zA-Z).                                 |
-| `isAlphanumeric`   | boolean | Checks if the string contains only letters and numbers.                              |
-| `isAscii`          | boolean | Checks if the string contains ASCII chars only.                                      |
-| `isEmail`          | boolean | Checks if the string is an email.                                                    |
-| `isJSON`           | boolean | Checks if the string is valid JSON.                                                  |
-| `minLength`        | number  | Checks if the string's length is not less than given number.                         |
-| `maxLength`        | number  | Checks if the string's length is not more than given number.                         |
-| `matches`          | string  | Checks if string matches the pattern.                                                |
-| `isMimeType`       | boolean | Checks if the string matches to a valid MIME type format.                            |
-| `arrayContains`    | array   | Checks if array contains all values from the given array of values.                  |
-| `arrayNotContains` | array   | Checks if array does not contain any of the given values.                            |
-| `arrayNotEmpty`    | boolean | Checks if given array is not empty.                                                  |
-| `arrayMinSize`     | number  | Checks if the array's length is greater than or equal to the specified number.       |
-| `arrayMaxSize`     | number  | Checks if the array's length is less than or equal to the specified number.          |
+| Validator        | Type    | Description                                                                          |
+| ---------------- | ------- | ------------------------------------------------------------------------------------ |
+| `required`       | boolean | Indicates whether the property must not be empty.                                    |
+| `isDefined`      | boolean | Checks if value is defined (!== undefined, !== null).                                |
+| `isOptional`     | boolean | Checks if given value is empty (=== null, === undefined) and ignores all validators. |
+| `equals`         | any     | Checks if value equals ("===") comparison.                                           |
+| `notEquals`      | any     | Checks if value not equal ("!==") comparison.                                        |
+| `isEmpty`        | boolean | Indicates whether the property can be empty.                                         |
+| `isNotEmpty`     | boolean | Indicates whether the property must not be empty. Alias for `required`               |
+| `isIn`           | array   | Checks if value is in an array of allowed values.                                    |
+| `isNotIn`        | array   | Checks if value not in an array of disallowed values.                                |
+| `min`            | number  | The minimum value or length allowed for the property.                                |
+| `max`            | number  | The maximum value or length allowed for the property.                                |
+| `contains`       | string  | Checks if string contains the seed.                                                  |
+| `notContains`    | string  | Checks if string does not contain the seed.                                          |
+| `isAlpha`        | boolean | Checks if the string contains only letters (a-zA-Z).                                 |
+| `isAlphanumeric` | boolean | Checks if the string contains only letters and numbers.                              |
+| `isAscii`        | boolean | Checks if the string contains ASCII chars only.                                      |
+| `isEmail`        | boolean | Checks if the string is an email.                                                    |
+| `isJSON`         | boolean | Checks if the string is valid JSON.                                                  |
+| `minLength`      | number  | Checks if the string's length is not less than given number.                         |
+| `maxLength`      | number  | Checks if the string's length is not more than given number.                         |
+| `matches`        | string  | Checks if string matches the pattern.                                                |
+| `isMimeType`     | boolean | Checks if the string matches to a valid MIME type format.                            |
