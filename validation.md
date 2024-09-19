@@ -99,8 +99,6 @@ Content-Type: application/json
 | `isNotIn`          | array   | Checks if value not in an array of disallowed values.                                |
 | `min`              | number  | The minimum value or length allowed for the property.                                |
 | `max`              | number  | The maximum value or length allowed for the property.                                |
-| `minDate`          | string  | The minimum date allowed for the property.                                           |
-| `maxDate`          | string  | The maximum date allowed for the property.                                           |
 | `contains`         | string  | Checks if string contains the seed.                                                  |
 | `notContains`      | string  | Checks if string does not contain the seed.                                          |
 | `isAlpha`          | boolean | Checks if the string contains only letters (a-zA-Z).                                 |
