@@ -1,5 +1,6 @@
 ---
 id: properties
+title: Properties
 ---
 
 # Add properties to an entity
@@ -8,7 +9,7 @@ Properties are the characteristics of your [entities](entities). For example, a 
 
 ## Syntax
 
-You can add the properties to your entities in the [backend.yml file](manifest-file)
+You can add the properties to your entities in the **backend.yml file**
 
 ```yaml
 name: Blog about cats

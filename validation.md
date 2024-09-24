@@ -10,7 +10,7 @@ You can use the built-in **custom validators** to ensure that the data you are r
 
 ## Syntax
 
-In your [backend.yml](./manifest-file), you can add a _validation_ object that lists the properties and their validators:
+In your **backend.yml**, you can add a _validation_ object that lists the properties and their validators:
 
 ```yaml
 entities:
@@ -56,7 +56,7 @@ entities:
       - {
           name: email,
           type: email,
-          validation: { contains: '@company.com', isOptional: true },
+          validation: { contains: '@company.com', isOptional: true }
         } #  If provided, the email should contain "@company.com"
 ```
 
