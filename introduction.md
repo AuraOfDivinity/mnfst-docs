@@ -37,8 +37,8 @@ entities:
       - name
 ```
 
-## Main features
+## Key features
 
-- ⚡ **Instant complete backend** with zero configuration
-- 🧠 **Super-easy syntax** to build with ease
-- 🛠️ **Plug and play** with your favorite frontend
+- ⚡ Develop 10x faster comparing to traditional approaches
+- 😎 Super-easy syntax easy to read and version control
+- 🕊️ Self-hosted free open source software

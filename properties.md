@@ -25,15 +25,20 @@ entities:
 
 You can pass arguments using the long syntax:
 
-| Option      | Default  | Type       | Description                                                             |
-| ----------- | -------- | ---------- | ----------------------------------------------------------------------- |
-| **type**    | "string" | _PropType_ | The [Property type](#property-types) (text, number, email, location...) |
-| **hidden**  | `false`  | boolean    | If the property should be hidden in the API response                    |
-| **options** | -        | Object     | Specific options depending on **type**                                  |
+| Option         | Default  | Type       | Description                                                                   |
+| -------------- | -------- | ---------- | ----------------------------------------------------------------------------- |
+| **type**       | "string" | _PropType_ | The [Property type](#property-types) (text, number, email, location...)       |
+| **hidden**     | `false`  | boolean    | If the property should be hidden in the API response                          |
+| **options**    | -        | Object     | Specific options depending on [property type](#property-types)                |
+| **validation** | -        | Object     | The [property validators](./validation.md) that each request compares against |
 
 ## Property types
 
-Each property has a **type** that represents real-world usages. Some of them have specific options.
+Manifest vision of **property types** goes beyond software development typing and is already built-in for real world usages. For example, the [Money](#money) PropType is handier than [Number](#number) for managing amounts as it comes with a `currency` options and only allows 2 digits after coma.
+
+Each PropType comes with a built-in type [validation](#validation).
+
+Some of them have specific options. Here is a list of the available types
 
 ### String
 
@@ -122,8 +127,8 @@ Password field.
 - { name: password, type: password }
 ```
 
-:::danger Caution
-Passwords should never be stored as clear text.
+:::warning Caution
+Passwords should never be stored as clear text. Manifest hashes the value when the **password** type is used.
 :::
 
 ### Choice
