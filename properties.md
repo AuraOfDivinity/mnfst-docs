@@ -120,6 +120,33 @@ For any field with a "true or false" value.
 - { name: isActive, type: boolean }
 ```
 
+### File
+
+A file upload. Read more in the [file upload doc](./upload.md#upload-a-file).
+
+```yaml
+- { name: document, type: file }
+```
+
+### Image
+
+An image upload. The different sizes should be provided to generate several sizes of it. Read more in the [image upload doc](./upload.md#upload-an-image).
+
+```yaml
+- {
+    name: photo,
+    type: image,
+    options:
+      { sizes: { small: { height: 90, width: 90 }, large: { width: 200 } } }
+  }
+```
+
+##### Parameters
+
+| Option    | Default                                | Type             | Description                                                                                                                                                                                |
+| --------- | -------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **sizes** | _thumbnail (80x80)_ _medium (160x160)_ | ImageSizesObject | An object with each key being the name of each size and with `width`, `height` and `fit` optional props. The _fit_ options works as in [Sharp](https://sharp.pixelplumbing.com/api-resize) |
+
 ### Password
 
 Password field.
