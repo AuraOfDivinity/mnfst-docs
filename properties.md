@@ -1,5 +1,6 @@
 ---
 id: properties
+title: Properties
 ---
 
 # Add properties to an entity
@@ -8,7 +9,7 @@ Properties are the characteristics of your [entities](entities). For example, a 
 
 ## Syntax
 
-You can add the properties to your entities in the [backend.yml file](manifest-file)
+You can add the properties to your entities in the **backend.yml file**
 
 ```yaml
 name: Blog about cats
@@ -25,15 +26,20 @@ entities:
 
 You can pass arguments using the long syntax:
 
-| Option      | Default  | Type       | Description                                                             |
-| ----------- | -------- | ---------- | ----------------------------------------------------------------------- |
-| **type**    | "string" | _PropType_ | The [Property type](#property-types) (text, number, email, location...) |
-| **hidden**  | `false`  | boolean    | If the property should be hidden in the API response                    |
-| **options** | -        | Object     | Specific options depending on **type**                                  |
+| Option         | Default  | Type       | Description                                                                   |
+| -------------- | -------- | ---------- | ----------------------------------------------------------------------------- |
+| **type**       | "string" | _PropType_ | The [Property type](#property-types) (text, number, email, location...)       |
+| **hidden**     | `false`  | boolean    | If the property should be hidden in the API response                          |
+| **options**    | -        | Object     | Specific options depending on [property type](#property-types)                |
+| **validation** | -        | Object     | The [property validators](./validation.md) that each request compares against |
 
 ## Property types
 
-Each property has a **type** that represents real-world usages. Some of them have specific options.
+Manifest vision of **property types** goes beyond software development typing and is already built-in for real world usages. For example, the [Money](#money) PropType is handier than [Number](#number) for managing amounts as it comes with a `currency` options and only allows 2 digits after coma.
+
+Each PropType comes with a built-in type [validation](#validation).
+
+Some of them have specific options. Here is a list of the available types
 
 ### String
 
@@ -113,6 +119,33 @@ For any field with a "true or false" value.
 ```yaml
 - { name: isActive, type: boolean }
 ```
+
+### File
+
+A file upload. Read more in the [file upload doc](./upload.md#upload-a-file).
+
+```yaml
+- { name: document, type: file }
+```
+
+### Image
+
+An image upload. The different sizes should be provided to generate several sizes of it. Read more in the [image upload doc](./upload.md#upload-an-image).
+
+```yaml
+- {
+    name: photo,
+    type: image,
+    options:
+      { sizes: { small: { height: 90, width: 90 }, large: { width: 200 } } }
+  }
+```
+
+##### Parameters
+
+| Option    | Default                                | Type             | Description                                                                                                                                                                                |
+| --------- | -------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **sizes** | _thumbnail (80x80)_ _medium (160x160)_ | ImageSizesObject | An object with each key being the name of each size and with `width`, `height` and `fit` optional props. The _fit_ options works as in [Sharp](https://sharp.pixelplumbing.com/api-resize) |
 
 ### Password
 

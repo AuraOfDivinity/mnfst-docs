@@ -7,49 +7,58 @@ import TabItem from '@theme/TabItem';
 
 # Relations
 
-Add a relationship between two [entities](entities.md), like an _Invoice_ that belongs to a _Customer_, a _Pet_ that belongs to an _Owner_, etc.
+You can create **one-to-many** relationships or **many-to-many** relationships.
 
-:::note
+## Syntax
 
-As of today, only the _BelongsTo_ and thus its opposite _hasMany_ are available.
-
-_ManyToMany_ relationships are coming soon.
-
-:::
-
-## BelongsTo relationship
-
-### Syntax
-
-This is a standard _HasMany_ / _BelongsTo_ relationship between **User** and **Cat** entities.
-
-Each **User** can have several **Cat** items. A **Cat** must have a **User**.
+The following example showcases the possibilities of **Manifest relations**:
 
 ```yaml
-😃 User:
-properties:
-  - name
+# manifest/backend.yml
 
-😺 Cat:
-  properties:
-    - name
-  belongsTo:
-    - User
+name: Basketball League 🏀
+
+entities:
+  Player 🤾:
+    properties:
+      - name
+    belongsTo:
+      - Team
+    belongsToMany:
+      - Skill
+
+  Team 👥:
+    properties:
+      - name
+
+  Skill 💪:
+    properties:
+      - name
+
+  Fixture 🏟️:
+    properties:
+      - { name: homeScore, type: number }
+      - { name: awayScore, type: number }
+    belongsTo:
+      - { name: homeTeam, entity: Team }
+      - { name: awayTeam, entity: Team }
 ```
 
-As for the [properties](properties.md), there is a short and a long syntax. The long syntax allows you pass params to it:
+In other words:
 
-```yaml
-🐶 Dog:
-  properties:
-    - name
-  belongsTo:
-    - { name: Owner, entity: User, eager: true }
-```
+- The **belongsTo** keyword creates a **many-to-one** relationship (and its opposite _one-to-many_)
+- The **belongsToMany** keyword creates a **many-to-many** bi-directional relationship
+- The **long syntax** (as in _Fixture.belongsTo_) is useful when we want to edit the name of the relationships
+
+:::tip
+
+All relationships are **bi-directional**, which means that you just have to specify them **in one side only** to work with them in both directions.
 
 When you define a **belongsTo** relationship, it implicitly set the opposite _hasMany_ relationship and allow [querying relations](#querying-relations) in both directions.
 
 ### Relation params
+
+## Relation params
 
 You can pass arguments using the long syntax:
 
@@ -59,7 +68,7 @@ You can pass arguments using the long syntax:
 | **entity** | -           | string  | The class name of the entity that the relationship is with                                                                       |
 | **eager**  | `false`     | boolean | Whether the relationship should be eager loaded. Otherwise, you need to explicitly request the relation in the client SDK or API |
 
-## Querying relations
+## Work with relations
 
 ### Load relations
 
@@ -129,3 +138,40 @@ Once the relation is loaded, you can also filter items by their relation id or p
 
   </TabItem>
 </Tabs>
+
+### Store relations
+
+To store or update an item with its relations, you have to pass the relation id(s) as a property that end with **Id** for many-to-one and **Ids** for many-to-many like `companyId` or `tagIds`
+
+<Tabs>
+  <TabItem value="sdk" label="JS SDK" default>
+    ```js
+      // Store a new player with relations Team and Skill.
+      const newPlayer = await manifest.from('players').create({
+        name: 'Mike',
+        teamId: 10,
+        skillIds: [1,2,3,4,5]
+      })
+    ```
+
+  </TabItem>
+  <TabItem value="rest" label="REST API" default>
+    ```http
+    // Store a new player with relations Team and Skill.
+    POST http://localhost:1111/api/dynamic/players
+    Content-Type: application/json
+    {
+        "name": "Mike",
+        "teamId": 10,
+        "skillIds": [1,2,3,4,5]
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
+:::note
+
+When storing **many-to-many** relations, you always need to **pass an array**, even if you just have one single value.
+
+:::

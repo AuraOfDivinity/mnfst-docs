@@ -1,6 +1,6 @@
 ---
 id: entities
-title: Create an entity
+title: Entities
 ---
 
 # Create an entity
